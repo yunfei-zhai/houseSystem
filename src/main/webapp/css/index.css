@@ -1,0 +1,66 @@
+
+.topic{
+	color: #6756EA;
+	display: inline-block;
+	margin-left: 3%;
+}
+.imgHouse{
+	position: absolute;
+	top: 5.5%;
+}
+.ulstyle li{
+	list-style: none;
+	float: left
+	
+}
+.ulstyle li a{
+display: inline-block;
+font-size: 25px;
+text-align: center;
+width: 100px;
+height: 40px;
+text-decoration:none;
+padding-left:10px ;
+padding-top: 5px;
+color: #FFFFFF;
+}        
+ 
+.ulstyle li a:hover{
+	background-color: #9199AA;
+}
+
+.find{
+	display: inline-block;
+	position: absolute;
+	top: 10%;
+	right: 17%;
+}
+.find input[type="text"]{
+	height: 40px;
+	width: 500px;
+	font-size: 15px;
+	
+}
+.find input[type="submit"]{
+	background-color: rgb(48,114,230);
+	color: #FFFFFF;
+	height: 46px;
+	width: 80px;
+	font-size: 20px;
+	
+}
+.post{
+	position: absolute;
+	top: 9.3%;
+	right: 5%;
+	display: inline-block;
+	text-decoration:none;
+	background-color: rgb(48,114,230);
+	color: #FFFFFF;
+	height: 33px;
+	width: 85px;
+	font-size: 20px;
+	margin-top: 6px;
+	padding-top: 9px;
+	border: rgb(221,221,221) solid 2px;
+}
