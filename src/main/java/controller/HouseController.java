@@ -1,6 +1,10 @@
 package controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.House;
+import model.User;
 import service.HouseService;
-import utils.ReturnInfo;
 
 @Controller
 @RequestMapping("/house")
@@ -50,5 +54,24 @@ public class HouseController {
 			txt=" where hms_house.type = "+hs.getType();
 		}
 		return service.selectHouseCount(txt);
+	}
+	
+	@RequestMapping("insert")
+	public String insert(String files,House h,HttpSession s) {
+		System.out.println(h.getPosition());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        h.setCreattime(df.format(new Date()));// new Date()为获取当前系统时间
+		h.setImg(files);
+		User user= (User) s.getAttribute("user");
+		h.setUserid(user.getId());
+		service.insert(h);
+		return "redirect:/index.html";
+	}
+	//查看房子详情
+	@RequestMapping("detail")
+	public String detail(int id,ModelMap m) {
+		m.put("house", service.selectById(id));
+		System.out.println(service.selectById(id).getUnitPrice());
+		return "housedetail";
 	}
 }

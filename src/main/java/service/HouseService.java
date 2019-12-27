@@ -21,4 +21,7 @@ public interface HouseService {
 	//搜索条件查找
 	public List<House> findHouse(String txt);
 	
+	//新增
+	public void insert(House h);
+	
 }

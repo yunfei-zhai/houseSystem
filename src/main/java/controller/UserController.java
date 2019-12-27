@@ -26,7 +26,7 @@ public class UserController {
 		String num = s.getAttribute("number").toString();
 		User user =service.login(u);
 		if(num.equalsIgnoreCase(code) && user != null){
-			s.setAttribute("loginUser", user);
+			s.setAttribute("user", user);
 			return "redirect:/index.html";
 		}else {
 			return "redirect:/login.html";

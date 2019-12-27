@@ -20,22 +20,26 @@
 	<c:if test="${findSize!=0}">
 		<h1>根据您的搜索共找到${findSize}套 青岛二手房</h1>
 	</c:if>
-	<a  href="../index.html">返回首页</a>
+	<a style="float: right;" href="../index.html">返回首页</a>
+	<div style="height: 10px;width: 10px">
+	
+	</div>
+	
 	<ul class="ul" style="list-style: none;">
 		<c:forEach items="${findInfo}" var="house" varStatus="status">
 			<li>
 				<div style="display: inline-block; width: 23%; height: 150px;">
-					<img style="height: 150px; width: 230px;" src="../images/bg1.jpg">
+					<img style="height: 150px; width: 230px;" src="${house.img}">
 				</div>
 				<div style="display: inline-block; width: 76%;">
 					<h2 style="margin-bottom: 20px;">${house.topic}</h2>
-					<p style="float: right; color: red; font-size: 20px;">${house.price}元</p>
+					<p style="float: right; color: red; font-size: 20px;">${house.price}万元</p>
 					<b style='display: block; margin-bottom: 20px;'>类型：${house.typeName}</b>
 					<span>${house.position}</span> <span>${house.area}平方米</span> <span>楼龄${house.houseage}年</span>
 					<br>
 					<div style="height: 20px;"></div>
 					<span>${house.creattime}发布<span> 
-					<a style="float: right;" href="hhhh?id=${house.id}">查看详情</a>
+					<a style="float: right;" target="_blank" href="detail.do?id=${house.id}">查看详情</a>
 				</div>
 				<hr>
 			</li>

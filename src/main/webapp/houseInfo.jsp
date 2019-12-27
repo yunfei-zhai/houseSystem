@@ -39,15 +39,15 @@
   	  success: function(data){
   		  for(var i=0;i<data.length;i++){
   			  var id=data[i].id;
-  			  var item="<li><div  style='display: inline-block; width: 23%; height: 150px;'><img style='height: 150px; width: 230px;' src='./images/bg1.jpg'></div>"
+  			  var item="<li><div  style='display: inline-block; width: 23%; height: 150px;'><img style='height: 150px; width: 230px;' src='"+data[i].img+"'></div>"
   			  +"<div style='display: inline-block; width: 76%;'>"
   			  +"<h2 style='margin-bottom: 20px;'>"+data[i].topic+"</h2>"
-  			  +"<p style='float: right; color: red; font-size: 20px;'>"+data[i].price+"元</p>"
+  			  +"<p style='float: right; color: red; font-size: 20px;'>"+data[i].price+"万元</p>"
   			  +"<b style='display: block; margin-bottom: 20px;'>类型："+data[i].typeName+"</b>"
   			  +"<span>"+data[i].position+"</span> <span>"+data[i].area+"平方米</span> <span>"+data[i].houseage+"室</span> <br>"
   			  +"<div style='height: 20px;'></div>"
   			  +"<span>"+data[i].creattime+"发布<span>"
-  			  +"<a style='float: right;' href='hhhh?id="+id+"'>查看详情</a>"
+  			  +"<a style='float: right;' target='_parent _blank' href='house/detail.do?id="+id+"'>查看详情</a>"
   			  +"</div>"
   			  +"<hr>"
   			  +"</li>";

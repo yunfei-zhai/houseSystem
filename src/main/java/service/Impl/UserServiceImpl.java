@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService{
 	
 	// 查询全部
 	public ReturnInfo selectUser(String where, Integer page, Integer count) {
-	System.out.println("查询到s层");
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
 		info.setList(dao.selectUser(where,ReturnInfo.getLimit(page, count)));
