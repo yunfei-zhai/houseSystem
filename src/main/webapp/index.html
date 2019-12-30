@@ -4,13 +4,14 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-2.2.4.min.js"></script>
 	</head>
 	<body>
 		<div>
 			<img class="imgHouse" src="images/house.png">
 			<h1 class="topic">青大找房</h1>
 			<div>
-				<form class="find" action="house/find.do" method="post">
+				<form class="find" action="house/find.do" method="post" target="_blank">
 					<input type="text" name="find" value=""  placeholder="请输入房源相关信息" />
 					<input type="submit" value="搜房源" />
 				</form>
@@ -32,26 +33,26 @@
 				</ul>
 			</div>
 		</div>
-		<div class="nav">
+		<div class="nav" >
 			<form action="" method="">
-				<table border="0" cellspacing="10px" cellpadding="">
+				<table id="table" border="0" cellspacing="10px" cellpadding="">
 					<tr>
 						<th>位置</th>
-						<td><label><input name="Position" type="checkbox" value="崂山区" />崂山区</label> </td>
-						<td><label><input name="Position" type="checkbox" value="市南区" />市南区</label></td>
-						<td><label><input name="Position" type="checkbox" value="市北区" />市北区</label></td>
-						<td><label><input name="Position" type="checkbox" value="李沧区" />李沧区</label></td>
-						<td><label><input name="Position" type="checkbox" value="城阳区" />城阳区</label></td>
-						<td><label><input name="Position" type="checkbox" value="即墨区" />即墨区</label></td>
-						<td><label><input name="Position" type="checkbox" value="市海岸新区" />市海岸新区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='崂山区'" />崂山区</label> </td>
+						<td><label><input name="Position" type="checkbox" value="position='市南区'" />市南区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='市北区'" />市北区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='李沧区'" />李沧区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='城阳区'" />城阳区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='即墨区'" />即墨区</label></td>
+						<td><label><input name="Position" type="checkbox" value="position='市海岸新区'" />市海岸新区</label></td>
 					</tr>
 					<tr>
 						<th>房型</th>
-						<td><label><input name="shape" type="checkbox" value="一室" />一室</label></td>
-						<td><label><input name="shape" type="checkbox" value="二室" />二室</label></td>
-						<td><label><input name="shape" type="checkbox" value="三室" />三室</label></td>
-						<td><label><input name="shape" type="checkbox" value="四室" />四室</label></td>
-						<td><label><input name="shape" type="checkbox" value="四室以上" />四室以上</label></td>
+						<td><label><input name="shape" type="checkbox" value="shape=1" />一室</label></td>
+						<td><label><input name="shape" type="checkbox" value="shape=2" />二室</label></td>
+						<td><label><input name="shape" type="checkbox" value="shape=3" />三室</label></td>
+						<td><label><input name="shape" type="checkbox" value="shape=4" />四室</label></td>
+						<td><label><input name="shape" type="checkbox" value="shape=5" />四室以上</label></td>
 					</tr>
 					<tr>
 						<th>面积</th>
@@ -64,12 +65,12 @@
 					</tr>	
 					<tr>
 						<th>楼龄</th>
-						<td><label><input name="houseage" type="checkbox" value="全新" />全新</label></td>
-						<td><label><input name="houseage" type="checkbox" value="三年内" />三年内</label></td>
-						<td><label><input name="houseage" type="checkbox" value="五年内" />五年内</label></td>
-						<td><label><input name="houseage" type="checkbox" value="十年内" />十年内</label></td>
-						<td><label><input name="houseage" type="checkbox" value="二十年内" />二十年内</label></td>
-						<td><label><input name="houseage" type="checkbox" value="二十年以上" />二十年以上</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage = 0 " />全新</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage <=3 " />三年内</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage <= 5 " />五年内</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage <= 10 " />十年内</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage <=20 " />二十年内</label></td>
+						<td><label><input name="houseage" type="checkbox" value="houseage >20 " />二十年以上</label></td>
 					</tr>	
 				</table>
 			</form>
@@ -77,5 +78,21 @@
 		<div style="height: 2px;width: 100%; background-color: #9199AA;">
 		</div>
 		<iframe style="height: 1000px; width: 100%; border: 0;" src="houseInfo.jsp" name="houseInfo"></iframe>
+	<script type="text/javascript">
+	
+	$("#table").click(function(){		//给table添加点击事件
+		  var checkboxValue= new Array();  
+		  var checkboxStr=$("input[type='checkbox']");    
+		  for(var i=0; i<checkboxStr.length; i++){  
+		        if(checkboxStr[i].checked){  
+		                //alert(checkboxStr[i].value+","+checkboxStr[i].nextSibling.nodeValue);  
+		            checkboxValue.push(checkboxStr[i].value); 
+		         }  
+		        } 
+		  window.open("house/find.do?condition="+checkboxValue,"houseInfo")
+		});
+	
+	
+	</script>
 	</body>
 </html>

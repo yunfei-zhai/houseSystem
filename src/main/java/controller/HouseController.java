@@ -34,13 +34,30 @@ public class HouseController {
 
 	// 根据搜索条件查找房子信息
 	@RequestMapping("find")
-	public String findHouse(String find, ModelMap m) {
-		String txt;
+	public String findHouse(String find, ModelMap m,String[] condition) {
+		for(String i:condition) {
+			System.out.println(i);
+		}
+		String txt=null;
 		if (!(find == null)) {
 			txt = " where topic like '%" + find + "%'";
 		} else {
 			txt = null;
 		}
+		
+		if(condition != null && condition.length !=0) {
+			if(condition.length == 1) {
+				txt= "where "+condition[0];
+			}else {
+				txt= "where "+condition[0];
+				for(int i=condition.length-1;i>=1;i--) {
+					txt= txt + " and "+ condition[i];
+					System.out.println(txt);
+				}
+				System.out.println(txt);
+			}
+		}
+		
 		m.addAttribute("findSize", service.findHouse(txt).size());
 		m.addAttribute("findInfo", service.findHouse(txt));
 		return "findHouseInfo";
@@ -71,7 +88,6 @@ public class HouseController {
 	@RequestMapping("detail")
 	public String detail(int id,ModelMap m) {
 		m.put("house", service.selectById(id));
-		System.out.println(service.selectById(id).getUnitPrice());
 		return "housedetail";
 	}
 }

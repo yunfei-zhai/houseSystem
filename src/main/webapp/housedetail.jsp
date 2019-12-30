@@ -40,7 +40,7 @@
 			style="color: red;">万</span> <b style="margin-left: 30px;">${house.unitPrice}元/平米</b>
 		<hr>
 		<div style="padding-top: 10px; padding-bottom: 10px">
-			<b style="font-size: 25px">${house.shape}</b> <b
+			<b style="font-size: 25px">${house.shape}室</b> <b
 				style="font-size: 25px; margin-left: 80px">${house.area}平方米</b>
 			<hr>
 		</div>

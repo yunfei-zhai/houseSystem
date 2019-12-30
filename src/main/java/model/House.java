@@ -6,7 +6,7 @@ public class House {
 	private String topic;
 	private String position;
 	private String posidetail;
-	private String shape;
+	private Integer shape;
 	private Integer area;
 	private Integer houseage;
 	private Double price;
@@ -40,10 +40,10 @@ public class House {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public String getShape() {
+	public Integer getShape() {
 		return shape;
 	}
-	public void setShape(String shape) {
+	public void setShape(Integer shape) {
 		this.shape = shape;
 	}
 	public Integer getArea() {

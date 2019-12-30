@@ -20,11 +20,6 @@
 	<c:if test="${findSize!=0}">
 		<h1>根据您的搜索共找到${findSize}套 青岛二手房</h1>
 	</c:if>
-	<a style="float: right;" href="../index.html">返回首页</a>
-	<div style="height: 10px;width: 10px">
-	
-	</div>
-	
 	<ul class="ul" style="list-style: none;">
 		<c:forEach items="${findInfo}" var="house" varStatus="status">
 			<li>
