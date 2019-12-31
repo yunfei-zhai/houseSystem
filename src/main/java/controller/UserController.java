@@ -15,7 +15,7 @@ import utils.ReturnInfo;
 import utils.ReturnJson;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
 	@Autowired
@@ -27,6 +27,7 @@ public class UserController {
 		User user =service.login(u);
 		if(num.equalsIgnoreCase(code) && user != null){
 			s.setAttribute("user", user);
+			s.setMaxInactiveInterval(100000);
 			return "redirect:/index.html";
 		}else {
 			return "redirect:/login.html";
@@ -35,7 +36,7 @@ public class UserController {
 	//退出登陆
 	@RequestMapping("outlogin")
 	public String login(HttpSession s){
-		s.removeAttribute("loginUser");
+		s.removeAttribute("user");
 		return "redirect:/login.html";
 	}
 	//查询全部

@@ -36,4 +36,12 @@ public class HouseServiceImpl implements HouseService {
 		dao.insert(h);
 	}
 
+	public List<House> selectByUserid(int id) {
+		return dao.selectByUserid(id);
+	}
+
+	public void delete(int houseid, int userid) {
+		dao.delete(houseid, userid);
+	}
+
 }

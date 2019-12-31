@@ -17,7 +17,7 @@ import model.User;
 import service.HouseService;
 
 @Controller
-@RequestMapping("/house")
+@RequestMapping("house")
 public class HouseController {
 	@Autowired
 	HouseService service;
@@ -35,16 +35,12 @@ public class HouseController {
 	// 根据搜索条件查找房子信息
 	@RequestMapping("find")
 	public String findHouse(String find, ModelMap m,String[] condition) {
-		for(String i:condition) {
-			System.out.println(i);
-		}
 		String txt=null;
 		if (!(find == null)) {
 			txt = " where topic like '%" + find + "%'";
 		} else {
 			txt = null;
 		}
-		
 		if(condition != null && condition.length !=0) {
 			if(condition.length == 1) {
 				txt= "where "+condition[0];
@@ -52,9 +48,7 @@ public class HouseController {
 				txt= "where "+condition[0];
 				for(int i=condition.length-1;i>=1;i--) {
 					txt= txt + " and "+ condition[i];
-					System.out.println(txt);
 				}
-				System.out.println(txt);
 			}
 		}
 		
@@ -90,4 +84,21 @@ public class HouseController {
 		m.put("house", service.selectById(id));
 		return "housedetail";
 	}
+	//删除
+	@RequestMapping("delete")
+	public String delete(int houseid,HttpSession session,ModelMap m) {
+		int userid = ((User) session.getAttribute("user")).getId();
+		service.delete(houseid, userid);
+		m.put("house", service.selectByUserid(userid));
+		return "postHouseInfo";
+	}
+	//
+	@RequestMapping("selectByUserid")
+	public String selectByUserid(HttpSession session,ModelMap m) {
+		int id = ((User) session.getAttribute("user")).getId();
+		m.put("house", service.selectByUserid(id));
+		
+		return "postHouseInfo";
+	}
+	
 }

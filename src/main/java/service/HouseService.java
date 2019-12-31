@@ -24,4 +24,8 @@ public interface HouseService {
 	//新增
 	public void insert(House h);
 	
+	public List<House> selectByUserid(int id);
+	
+	public void delete(int houseid, int userid);
+	
 }

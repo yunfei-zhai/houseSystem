@@ -5,16 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="js/jquery-2.2.4.min.js"></script>
 <title>Insert title here</title>
+<script src="../js/jquery-2.2.4.min.js"></script>
+<link href="../layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="../layui/layui.all.js"></script>
 <style type="text/css">
 .detail span {
 	margin: 20px;
 }
 </style>
+
 </head>
 <body>
-	<div style="height: 180px; background-color: rgb(245, 245, 245);">
+	<div style="height: 160px; background-color: rgb(245, 245, 245);">
 
 
 		<div style="height: 70px;">
@@ -29,8 +32,10 @@
 			<span style="color: #9199AA">${house.description}</span>
 		</div>
 	</div>
+
 	<div style="margin-left: 80px; padding: 8px">
-		<span>青岛房产>${house.position}>${house.posidetail}</span>
+		<span>青岛房产 &nbsp>&nbsp ${house.position} &nbsp> &nbsp
+			${house.posidetail}</span>
 	</div>
 	<div style="margin-left: 80px; float: left; height: 380px; width: 50%">
 		<img src="${house.img}" style="height: 380px; width: 100%">
@@ -46,27 +51,53 @@
 		</div>
 		<div class="detail">
 			<div>
-				<span>详细地址 </span><span>${house.posidetail} <span></span>
+				<span style="color: #9199AA">详细地址 </span><span>${house.posidetail} <span></span>
 			</div>
 			<div>
-				<span>所在区域 </span> <span>${house.position}</span>
+				<span style="color: #9199AA">所在区域 </span> <span>${house.position}</span>
 			</div>
 			<div>
-				<span>看房时间 </span> <span>请联系房主</span>
+				<span style="color: #9199AA">看房时间 </span> <span>请联系房主</span>
 			</div>
 			<hr>
 		</div>
 		<div>
-			<h1 style="font-size: 27px">${house.name}</h1>
+			<h1 style="font-size: 27px">房主： ${house.name}</h1>
 			<div
-				style="border-radius:5px;overflow:hidden; height: 40px; width: 80%; background-color: rgb(48, 114, 246); color: white;">
-				<span style="font-size: 27px">电话:${house.tel}</span>
+				style=" margin-top:20px;padding-left:10px; height: 30px; width: 80%; background-color: rgb(48, 114, 246);color: white;border-radius: 5px;">
+				<span style="font-size: 20px">电话:${house.tel}</span>
 			</div>
 			<div
-				style="border-radius:5px;overflow:hidden; margin-top: 5px; height: 40px; width: 80%; background-color: rgb(48, 114, 246); color: white;">
-				<span style="font-size: 27px">邮箱:${house.email}</span>
+				style="margin-top:10px;padding-left:10px;  margin-top: 5px; height: 30px; width: 80%; background-color:rgb(48, 114, 246);color: white;border-radius: 5px;">
+				<span style="font-size: 20px">邮箱:${house.email}</span>
 			</div>
+
 		</div>
 	</div>
+	<div>
+		<input style="border-radius: 5px; height: 30px; width: 6.3%; background-color: rgb(48, 114, 246);color: white; float: right;"  onclick="collect()" type="button" value="点击收藏">
+	</div>
+	<div
+		style="height: 40px; width: 100%; background-color: rgb(245, 245, 245); clear: both"></div>
+
+<script type="text/javascript">
+function collect(){
+	 var houseid=${house.id}
+	$.ajax({
+	  	  type: 'POST',
+	  	  url: "../collection/insert.do?houseid="+houseid,
+	  	  data: JSON.stringify({
+	  	    
+	  	  }),
+	  	  contentType:'application/json',
+	  	  success: function(data){
+	  		layer.msg('收藏成功',{icon: 1});
+	  	  },
+	  	  dataType: "json",
+	  	}); 
+	}
+
+</script>
+
 </body>
 </html>
