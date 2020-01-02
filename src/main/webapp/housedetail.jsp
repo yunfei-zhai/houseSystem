@@ -51,7 +51,8 @@
 		</div>
 		<div class="detail">
 			<div>
-				<span style="color: #9199AA">详细地址 </span><span>${house.posidetail} <span></span>
+			
+				<span style="color: #9199AA">详细地址 </span>  <span><a href="../map.jsp?position=山东省青岛市${house.posidetail}" target="_blank">${house.posidetail}(点击查看地图)</a> </span>
 			</div>
 			<div>
 				<span style="color: #9199AA">所在区域 </span> <span>${house.position}</span>
@@ -83,6 +84,7 @@
 <script type="text/javascript">
 function collect(){
 	 var houseid=${house.id}
+	 var position="山东省青岛市"+${house.position}+${house.posidetail};
 	$.ajax({
 	  	  type: 'POST',
 	  	  url: "../collection/insert.do?houseid="+houseid,
