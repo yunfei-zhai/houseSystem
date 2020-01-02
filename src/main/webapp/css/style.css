@@ -112,7 +112,7 @@ input[name="tel"] {
 	  margin-top: 2em;
 }
 input[name="code"] {
-	  width: 54%;
+	  width: 50%;
 	  display:inline-block;
 	  float:left;
 	  padding: 1em 2em 1em 3em;
@@ -137,13 +137,13 @@ input[name="code"] {
 	  border-bottom: 1px solid#484856;
 	
  }
-#code{
+ #code{
 	display:inline-block;
-	width: 18%;
+	width: 22%;
 	height: 55px;
 	float: right;
 	margin-right: 2%;
-}
+} 
 .key {
    background: url(../images/pass.png) no-repeat 447px 17px;
 }

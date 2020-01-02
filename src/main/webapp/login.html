@@ -9,7 +9,7 @@
 <script src="js/jquery-2.2.4.min.js"></script>
 </head>
 <body>
-	
+
 	<!--SIGN UP-->
 	<h1>买二手房选青大</h1>
 	<div class="login-form">
@@ -24,10 +24,9 @@
 		</div>
 		<form method="post" action="user/login.do">
 			<input name="tel" type="text" class="text" placeholder="手机号码">
-			<input name="password" type="password" placeholder="密码"> <input
-				name="code" type="text" class="text" placeholder="验证码"> <img
-				id="code" name="code" src="img" style="float: left">
-
+			<input name="password" type="password" placeholder="密码"> 
+			<input name="code" type="text" class="text" placeholder="验证码"> 
+			<img id="code" name="code" src="user/getVerifiCode.do" style="float: left">
 			<div class="signin">
 				<input type="submit" value="Login">
 			</div>
@@ -35,7 +34,7 @@
 	</div>
 	<script>
 		$("#code").click(function() {
-			$(this)[0].src = 'img?' + Math.random()
+			$(this)[0].src = 'user/getVerifiCode.do?' + Math.random()
 		});
 	</script>
 </body>
