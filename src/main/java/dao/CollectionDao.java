@@ -18,6 +18,11 @@ public interface CollectionDao {
  @Insert("insert into hms_collection (houseid,userid) values(${houseid},${userid})")
  public void insert(@Param("houseid") int houseid,@Param("userid") int userid);
  
+ //本人删除
  @Delete("delete from hms_collection where userid=#{userid} and houseid=#{houseid}")
  public void delete(@Param("houseid") int houseid,@Param("userid") int userid);
+ 
+ //发布者删除 导致收藏删除
+ @Delete("delete from hms_collection where houseid=#{houseid}")
+ public void deleteByPoster(int houseid);
 }

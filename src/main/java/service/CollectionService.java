@@ -11,5 +11,6 @@ public interface CollectionService {
 	public void insert(int houseid, int userid);
 
 	public void delete(int houseid, int userid);
-
+	
+	public void deleteByPoster(int houseid);
 }

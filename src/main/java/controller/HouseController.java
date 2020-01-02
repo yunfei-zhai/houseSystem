@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.House;
 import model.User;
+import service.CollectionService;
 import service.HouseService;
 
 @Controller
@@ -21,7 +22,8 @@ import service.HouseService;
 public class HouseController {
 	@Autowired
 	HouseService service;
-
+	@Autowired
+	CollectionService coolectionService;
 	// 查询房子信息
 	@RequestMapping("index")
 	public @ResponseBody List<House> select(House hs, Integer page, Integer limit) {
@@ -89,6 +91,7 @@ public class HouseController {
 	public String delete(int houseid,HttpSession session,ModelMap m) {
 		int userid = ((User) session.getAttribute("user")).getId();
 		service.delete(houseid, userid);
+		coolectionService.deleteByPoster(houseid);
 		m.put("house", service.selectByUserid(userid));
 		return "postHouseInfo";
 	}
@@ -97,7 +100,6 @@ public class HouseController {
 	public String selectByUserid(HttpSession session,ModelMap m) {
 		int id = ((User) session.getAttribute("user")).getId();
 		m.put("house", service.selectByUserid(id));
-		
 		return "postHouseInfo";
 	}
 	

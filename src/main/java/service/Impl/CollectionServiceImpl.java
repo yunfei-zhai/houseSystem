@@ -24,4 +24,8 @@ public class CollectionServiceImpl implements CollectionService {
 		dao.delete(houseid, userid);
 	}
 
+	public void deleteByPoster(int houseid) {
+		dao.deleteByPoster(houseid);
+	}
+
 }
